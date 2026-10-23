@@ -1,0 +1,21 @@
+# The website lives inside the Android app's assets folder (the same index.html
+# the WebView loads), so Netlify publishes that folder directly as a static site.
+[build]
+  publish = "app/src/main/assets"
+  command = ""
+
+# Images and the bundled Tailwind script rarely change; cache them for a week.
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/tailwind.min.js"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
