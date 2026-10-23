@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ركن الصلاة | فوراكس أبيض فاخر ومقاوم للماء</title>
+  
+  <!-- Google Fonts: Cairo & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Local & Offline Tailwind CSS -->
+  <script src="tailwind.min.js"></script>
+  <script>
+    if (typeof tailwind === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.tailwindcss.com';
+      document.head.appendChild(script);
+    }
+  </script>
+  
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                50: '#FDFBF7',
+                100: '#FAF4E6',
+                200: '#F5E6BF',
+                300: '#EED492',
+                400: '#E4BF60',
+                500: '#D4AF37',
+                600: '#B8860B',
+                700: '#8C6508',
+                800: '#634705',
+                900: '#3D2B03'
+              }
+            },
+            fontFamily: {
+              cairo: ['Cairo', 'sans-serif'],
+              amiri: ['Amiri', 'serif']
+            },
+            animation: {
+              'glow-pulse': 'glowPulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+            },
+            keyframes: {
+              glowPulse: {
+                '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+                '50%': { opacity: '0.85', transform: 'scale(1.05)' }
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #FAF8F5;
+      color: #1F2421;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .golden-aura {
+      background: radial-gradient(circle, rgba(212,175,55,0.25) 0%, rgba(245,230,191,0.12) 45%, rgba(250,248,245,0) 75%);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+    }
+
+    .glass-card-gold {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(253, 251, 247, 0.95));
+      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      box-shadow: 0 12px 36px -10px rgba(212, 175, 55, 0.22);
+    }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8F5] text-stone-800 antialiased selection:bg-gold-500 selection:text-white">
+
+  <!-- Floating Ambient Glowing Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-24 right-1/4 w-96 h-96 rounded-full golden-aura animate-glow-pulse"></div>
+    <div class="absolute top-1/2 -left-28 w-80 h-80 rounded-full golden-aura animate-glow-pulse" style="animation-delay: 2s;"></div>
+    <div class="absolute -bottom-24 right-10 w-96 h-96 rounded-full golden-aura animate-glow-pulse" style="animation-delay: 3s;"></div>
+  </div>
+
+  <!-- In-Page Alert Toast Banner (Hidden by Default) -->
+  <div id="pageToast" class="fixed top-4 inset-x-4 max-w-md mx-auto z-50 bg-stone-900 text-white p-3.5 rounded-2xl border-2 border-gold-400 shadow-2xl flex items-center justify-between gap-3 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="flex items-center gap-2">
+      <span class="text-xl text-gold-400" id="toastIcon">✨</span>
+      <span class="text-xs sm:text-sm font-bold" id="toastMessage">رسالة التنبيه</span>
+    </div>
+    <button onclick="hideToast()" class="text-stone-400 hover:text-white text-xs px-2 py-1">✕</button>
+  </div>
+
+  <!-- Announcement Bar -->
+  <div class="relative z-40 bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 text-gold-300 py-2.5 px-4 text-center text-xs md:text-sm font-semibold border-b border-gold-500/30 flex items-center justify-center gap-2 shadow-sm">
+    <span class="inline-block animate-bounce">🚚</span>
+    <span>التوصيل السريع متوفر لكافة الولايات 58 عبر <strong>Swift Express</strong> | <strong>الدفع عند الاستلام بعد معاينة المنتج</strong></span>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-30 glass-card border-b border-gold-500/20 shadow-sm transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      
+      <!-- Brand Logo (Unified: ركن الصلاة) -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 flex items-center justify-center text-white shadow-md shadow-gold-500/25 group-hover:scale-105 transition-transform duration-300">
+          <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+            <path d="M12 2L15 8H9L12 2ZM12 22C6.48 22 2 17.52 2 12C2 7.7 4.73 4.04 8.58 2.65L7.29 5.86C4.85 7.07 3.5 9.77 3.5 12.5C3.5 17.19 7.31 21 12 21C16.69 21 20.5 17.19 20.5 12.5C20.5 9.77 19.15 7.07 16.71 5.86L15.42 2.65C19.27 4.04 22 7.7 22 12C22 17.52 17.52 22 12 22Z"/>
+            <path d="M12 6C9.24 6 7 8.24 7 11V16H17V11C17 8.24 14.76 6 12 6Z"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-black text-stone-900 block leading-tight font-amiri">ركن الصلاة</span>
+          <span class="text-[11px] font-bold text-gold-700 block tracking-wide">فوراكس (Forex) فاخر مقاوم للماء</span>
+        </div>
+      </a>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Copy Source Button -->
+        <button onclick="copyPageHtml()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-700 bg-white/90 hover:bg-gold-50 border border-stone-200 hover:border-gold-400 rounded-xl shadow-xs transition-all duration-200">
+          <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+          </svg>
+          <span>نسخ كود HTML</span>
+        </button>
+
+        <!-- CTA Order Button -->
+        <a href="#order-section" class="relative group overflow-hidden rounded-xl bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 text-white font-extrabold px-5 py-2.5 text-xs sm:text-sm shadow-md shadow-gold-500/30 hover:shadow-lg hover:shadow-gold-500/40 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
+          <span class="relative z-10 flex items-center gap-1.5">
+            <span>اطلب الآن</span>
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </span>
+          <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- Hero Section -->
+    <section class="relative pt-6 pb-12 md:pt-10 md:pb-18 px-4 sm:px-6 overflow-hidden">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          
+          <!-- Text Content -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+            
+            <!-- Quality & Water Resistance Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs sm:text-sm font-bold shadow-xs">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span>مادة الفوراكس (Forex) عالية الجودة المقاومة للماء والرطوبة 100%</span>
+            </div>
+
+            <!-- Catchy Title (Enhanced Copywriting) -->
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 leading-[1.3] tracking-tight">
+              حوّل زاوية صلاتك في البيت لواحة من <br class="hidden sm:inline">
+              <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-l from-gold-600 via-gold-500 to-amber-700 font-amiri">
+                الخشوع والترتيب الأنيق
+                <svg class="absolute -bottom-2 right-0 w-full text-gold-400/40" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
+                  <path d="M0,5 Q50,0 100,5" stroke="currentColor" stroke-width="4" fill="none"/>
+                </svg>
+              </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-stone-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <strong>ركن الصلاة</strong> المصمم خصيصاً من <strong>مادة الفوراكس (Forex)</strong> البيضاء الناصعة المقاومة للماء والرطوبة، بنقوش إسلامية راقية (أركت). يمنحك تنظيماً ذكياً متكاملاً: رف علوي مريح للمصحف الشريف، رف أوسط للمبخرة والعود، ومساحة سفلية واسعة لسجادات الصلاة.
+            </p>
+
+            <!-- Price Badge Box -->
+            <div class="glass-card-gold p-4 sm:p-5 rounded-2xl max-w-lg mx-auto lg:mx-0 border-gold-500/40">
+              <div class="flex items-center justify-between gap-4 flex-wrap">
+                <div>
+                  <span class="text-xs text-stone-500 font-bold block">السعر الرسمي للمنتج:</span>
+                  <div class="flex items-baseline gap-2 mt-0.5">
+                    <span class="text-3xl sm:text-4xl font-black text-gold-600 font-cairo">4500 دج</span>
+                    <span class="text-sm sm:text-base text-stone-400 line-through">6500 دج</span>
+                  </div>
+                </div>
+                <div class="bg-gold-500/15 text-gold-900 border border-gold-400/50 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-gold-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>وفر 2000 دج الآن</span>
+                </div>
+              </div>
+              <div class="mt-3 pt-3 border-t border-gold-500/20 flex items-center justify-between text-xs text-stone-600 font-medium flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 font-bold text-emerald-700">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  الدفع عند الاستلام بعد معاينة المنتج
+                </span>
+                <span class="text-stone-800 font-bold bg-white px-2.5 py-1 rounded-lg border border-stone-200">الارتفاع: 1.17 م | العرض: 40 سم</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-1">
+              <a href="#order-section" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 text-gold-300 hover:text-gold-200 font-extrabold text-sm sm:text-base shadow-xl hover:shadow-2xl shadow-stone-900/25 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 border border-gold-500/40">
+                <span>اطلب ركن الصلاة الآن</span>
+                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+              <a href="#gallery-section" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-gold-50/50 text-stone-800 font-bold text-sm sm:text-base border border-stone-300 hover:border-gold-400 shadow-xs transition-all duration-300">
+                <svg class="w-5 h-5 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <span>معرض الصور الواقعية</span>
+              </a>
+            </div>
+
+            <!-- Swift Express Mini Trust -->
+            <div class="flex items-center justify-center lg:justify-start gap-4 pt-1 text-xs font-semibold text-stone-600">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+                شحن رسمي عبر Swift Express لـ 58 ولاية
+              </span>
+              <span>•</span>
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-gold-500 inline-block"></span>
+                مقاوم للماء والرطوبة
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Prominent Real Hero Image -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+              
+              <!-- Radiant Gold Glow Effect -->
+              <div class="absolute inset-0 -m-6 sm:-m-10 bg-gradient-to-tr from-gold-400/35 via-gold-500/25 to-amber-300/35 rounded-3xl blur-2xl animate-glow-pulse"></div>
+              
+              <!-- Container with Real Realistic Product Photo -->
+              <div class="relative rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white via-white/95 to-gold-50/90 border-2 border-gold-400/60 shadow-2xl shadow-gold-500/25 overflow-hidden group">
+                
+                <div class="relative overflow-hidden rounded-2xl bg-stone-100 aspect-[9/14] sm:aspect-[4/5]">
+                  <img id="hero-img" src="product_decorated_room.jpg" onerror="this.onerror=null;this.src='images/product_decorated_room.jpg';" alt="ركن الصلاة داخل ديكور دافئ مع المصحف والمبخرة والسجادات" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                  
+                  <!-- Floating Price Pill on Image -->
+                  <div class="absolute bottom-3 right-3 bg-stone-900/90 backdrop-blur-md text-white px-3.5 py-1.5 rounded-xl border border-gold-400/50 shadow-lg flex items-center gap-2">
+                    <span class="text-xs text-gold-300 font-medium">السعر:</span>
+                    <span class="text-base font-black text-gold-400 font-cairo">4500 دج</span>
+                  </div>
+
+                  <!-- Real Photo Proof Badge -->
+                  <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-stone-900 px-3 py-1.5 rounded-lg border border-gold-400/40 shadow-md text-[11px] font-extrabold flex items-center gap-1.5">
+                    <span class="text-emerald-600">📸</span>
+                    <span>صورة واقعية 100% للمنتج</span>
+                  </div>
+                </div>
+
+                <!-- Dimensions & Material Bar -->
+                <div class="mt-3 px-3 py-2 bg-gold-50 rounded-xl border border-gold-200/90 flex items-center justify-between text-xs font-bold text-stone-800">
+                  <span class="flex items-center gap-1 text-gold-800">
+                    <span class="w-2 h-2 rounded-full bg-gold-600"></span>
+                    فوراكس أبيض مقاوم للماء
+                  </span>
+                  <span class="text-stone-900 font-extrabold">الارتفاع 1.17 م | العرض 40 سم</span>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery / Carousel Section (Realistic Photos + Workshop) -->
+    <section id="gallery-section" class="py-14 md:py-18 px-4 sm:px-6 relative bg-white/60 border-y border-gold-500/20">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-900 text-xs font-extrabold mb-2.5">
+            <span>معرض الصور الواقعية</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-stone-900">
+            شاهد ركن الصلاة بكامل تفاصيله الواقعية
+          </h2>
+          <p class="text-stone-600 text-xs sm:text-sm mt-1">
+            صور حقيقية توضح جودة مادة الفوراكس البيضاء النقية ودقة تفاصيل الرفوف ونقش الأركت الإسلامي
+          </p>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="relative glass-card-gold p-3 sm:p-5 rounded-3xl overflow-hidden shadow-2xl">
+          
+          <!-- Slides Wrapper -->
+          <div class="relative overflow-hidden rounded-2xl aspect-[16/10] sm:aspect-[16/9] bg-stone-100">
+            
+            <!-- Slide 1: Real Decorated Room Setup -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-100 z-20">
+              <img src="product_decorated_room.jpg" onerror="this.onerror=null;this.src='images/product_decorated_room.jpg';" alt="ركن الصلاة داخل ديكور دافئ مع المصحف والمبخرة والسجادات" class="w-full h-full object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/85 via-stone-900/40 to-transparent p-4 sm:p-6 text-white">
+                <span class="text-xs font-bold text-gold-400 block mb-1">صورة واقعية 1</span>
+                <h4 class="text-sm sm:text-lg font-bold">ركن الصلاة في الصالون مع المصحف الشريف، المبخرة، والسجادات المطوية</h4>
+              </div>
+            </div>
+
+            <!-- Slide 2: Real Workshop Production (Clean) -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 z-10 pointer-events-none">
+              <img src="product_real_workshop_clean.jpg" onerror="this.onerror=null;this.src='images/product_real_workshop_clean.jpg';" alt="صورة حقيقية لركن الصلاة من ورشة التصنيع" class="w-full h-full object-contain bg-stone-900">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-900/50 to-transparent p-4 sm:p-6 text-white">
+                <span class="text-xs font-bold text-gold-400 block mb-1">صورة واقعية 2 (من الورشة)</span>
+                <h4 class="text-sm sm:text-lg font-bold">القطعة الفعلية المصنعة من مادة الفوراكس (Forex) البيضاء ونقوش الأركت المتقنة</h4>
+              </div>
+            </div>
+
+            <!-- Slide 3: Main with Dimensions (1.17m x 40cm) -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 z-10 pointer-events-none">
+              <img src="watermarked_img_12509148869526664252.jpg" onerror="this.onerror=null;this.src='images/watermarked_img_12509148869526664252.jpg';" alt="ركن الصلاة مع الأبعاد 1.17م × 40سم" class="w-full h-full object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/85 via-stone-900/40 to-transparent p-4 sm:p-6 text-white">
+                <span class="text-xs font-bold text-gold-400 block mb-1">الأبعاد الرسمية</span>
+                <h4 class="text-sm sm:text-lg font-bold">الارتفاع 1.17 متر | العرض 40 سم متناسق مع كافة مساحات المنزل</h4>
+              </div>
+            </div>
+
+            <!-- Slide 4: Top Quran Shelf Close-Up -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 z-10 pointer-events-none">
+              <img src="watermarked_img_2837152443398573008.jpg" onerror="this.onerror=null;this.src='images/watermarked_img_2837152443398573008.jpg';" alt="الرف العلوي للمصحف الشريف" class="w-full h-full object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/85 via-stone-900/40 to-transparent p-4 sm:p-6 text-white">
+                <span class="text-xs font-bold text-gold-400 block mb-1">تفاصيل الرف العلوي</span>
+                <h4 class="text-sm sm:text-lg font-bold">رف علوي مائل بانحناء مريح لسهولة التلاوة والخشوع</h4>
+              </div>
+            </div>
+
+            <!-- Slide 5: Wide Full View -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 z-10 pointer-events-none">
+              <img src="watermarked_img_642462861531347274.jpg" onerror="this.onerror=null;this.src='images/watermarked_img_642462861531347274.jpg';" alt="عرض واسع للمكونات كاملة" class="w-full h-full object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/85 via-stone-900/40 to-transparent p-4 sm:p-6 text-white">
+                <span class="text-xs font-bold text-gold-400 block mb-1">نظرة شاملة</span>
+                <h4 class="text-sm sm:text-lg font-bold">ركن الصلاة الكامل: خزانة السجادات، رف المبخرة، وحامل المصحف</h4>
+              </div>
+            </div>
+
+            <!-- Next / Prev Controls -->
+            <button onclick="prevSlide()" class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/85 hover:bg-white text-stone-900 hover:text-gold-600 shadow-lg flex items-center justify-center transition-all duration-200 z-30 focus:outline-none">
+              <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button onclick="nextSlide()" class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/85 hover:bg-white text-stone-900 hover:text-gold-600 shadow-lg flex items-center justify-center transition-all duration-200 z-30 focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+          </div>
+
+          <!-- Thumbnail Buttons -->
+          <div class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <button onclick="goToSlide(0)" class="carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-gold-500 bg-gold-500 text-white shadow-xs text-center truncate">
+              1. في الصالون (واقعي)
+            </button>
+            <button onclick="goToSlide(1)" class="carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-stone-200 bg-white text-stone-700 hover:border-gold-400 text-center truncate">
+              2. من الورشة (فعلية)
+            </button>
+            <button onclick="goToSlide(2)" class="carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-stone-200 bg-white text-stone-700 hover:border-gold-400 text-center truncate">
+              3. الأبعاد (1.17م)
+            </button>
+            <button onclick="goToSlide(3)" class="carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-stone-200 bg-white text-stone-700 hover:border-gold-400 text-center truncate">
+              4. رف المصحف
+            </button>
+            <button onclick="goToSlide(4)" class="carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-stone-200 bg-white text-stone-700 hover:border-gold-400 text-center truncate col-span-2 sm:col-span-1">
+              5. العرض الواسع
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Features Section (Focus on Forex & Smart Organization) -->
+    <section id="features-section" class="py-16 md:py-20 px-4 sm:px-6 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-50 border border-gold-300 text-gold-800 text-xs font-bold mb-3">
+            <span>مواصفات دقيقة وعملية</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+            لماذا يختار آلاف الجزائريين "ركن الصلاة"؟
+          </h2>
+          <p class="text-stone-600 text-sm mt-2">
+            تمت دراسة كل تفصيلة ليجمع ركن الصلاة بين المتانة المطلقة وسهولة التنظيم وجمال الديكور الإسلامي المعاصر.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Feature 1: Quran Shelf -->
+          <div class="group glass-card p-6 rounded-2xl hover:border-gold-500 hover:shadow-xl hover:shadow-gold-500/15 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-100 border border-gold-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-xs">
+              📖
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 mb-2 group-hover:text-gold-700 transition-colors">
+              رف علوي مريح للمصحف
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              مصمم بانحناء مريح لسهولة التلاوة والتدبر دون إجهاد للرقبة والظهر، مع حواف مثبتة تضمن ثبات المصحف الشريف أثناء القراءة.
+            </p>
+          </div>
+
+          <!-- Feature 2: Middle Shelf -->
+          <div class="group glass-card p-6 rounded-2xl hover:border-gold-500 hover:shadow-xl hover:shadow-gold-500/15 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-100 border border-gold-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-xs">
+              📿
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 mb-2 group-hover:text-gold-700 transition-colors">
+              رف أوسط للمبخرة والعود
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              مكان مخصص للمبخرة ونشر عبق العود الزكي وقوارير المسك والسبحة، ليضفي على زاوية العبادة أجواء روحانية ملهمة وهادئة.
+            </p>
+          </div>
+
+          <!-- Feature 3: Bottom Storage -->
+          <div class="group glass-card p-6 rounded-2xl hover:border-gold-500 hover:shadow-xl hover:shadow-gold-500/15 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-100 border border-gold-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-xs">
+              🕋
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 mb-2 group-hover:text-gold-700 transition-colors">
+              مساحة تخزين سفلية واسعة
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              خزانة سفلية رحبة تتسع لعدة سجادات صلاة مطوية وإسدالات الصلاة وكتب التفسير، لتحافظ على ترتيب وجمال الغرفة دائماً.
+            </p>
+          </div>
+
+          <!-- Feature 4: Premium Forex Material -->
+          <div class="group glass-card p-6 rounded-2xl hover:border-gold-500 hover:shadow-xl hover:shadow-gold-500/15 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-100 border border-gold-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-xs">
+              🎨
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 mb-2 group-hover:text-gold-700 transition-colors">
+              مادة الفوراكس (Forex) عالية الجودة
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              مصنوع خصيصاً من مادة الفوراكس المتينة والمقاومة للماء والرطوبة 100%، بلون أبيض ناصع يتماشى مع أحدث ديكورات المنازل ونقوش أركت راقية.
+            </p>
+          </div>
+
+          <!-- Feature 5: Perfect Dimensions -->
+          <div class="group glass-card p-6 rounded-2xl hover:border-gold-500 hover:shadow-xl hover:shadow-gold-500/15 hover:-translate-y-1.5 transition-all duration-300 md:col-span-2 lg:col-span-2">
+            <div class="w-12 h-12 rounded-xl bg-gold-100 border border-gold-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-xs">
+              📏
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 mb-2 group-hover:text-gold-700 transition-colors">
+              أبعاد مثالية تناسب المساحات
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed mb-4">
+              أبعاد هندسية دقيقة تسمح بوضع ركن الصلاة في زاوية غرفة النوم، الصالون، أو المجلس دون أن يضيق الحركة.
+            </p>
+            <div class="grid grid-cols-2 gap-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
+              <div class="text-center p-2 rounded-lg bg-white shadow-2xs">
+                <span class="text-xs text-stone-500 block">الارتفاع الكلي</span>
+                <span class="text-base font-extrabold text-gold-700 font-cairo">1.17 متر (117 سم)</span>
+              </div>
+              <div class="text-center p-2 rounded-lg bg-white shadow-2xs">
+                <span class="text-xs text-stone-500 block">عرض الواجهة</span>
+                <span class="text-base font-extrabold text-gold-700 font-cairo">40 سم</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Order Form Section with Swift Express 58 Wilayas Matrix -->
+    <section id="order-section" class="py-14 md:py-20 px-4 sm:px-6 relative">
+      <div class="max-w-3xl mx-auto">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold mb-2.5 shadow-xs">
+            <span>التوصيل متوفر لجميع الولايات الـ 58 عبر Swift Express</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
+            استمارة طلب ركن الصلاة
+          </h2>
+          <p class="text-stone-600 text-sm mt-1.5">
+            املأ البيانات وسيقوم فريق العمل بالاتصال بك هاتفياً لتأكيد الشحن فوراً
+          </p>
+        </div>
+
+        <!-- Form Card Container -->
+        <div class="glass-card-gold p-6 sm:p-9 rounded-3xl shadow-2xl relative overflow-hidden">
+          
+          <!-- Swift Express Official Partner Header -->
+          <div class="bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 text-white p-3.5 -mx-6 -mt-6 sm:-mx-9 sm:-mt-9 mb-6 flex items-center justify-between flex-wrap gap-2 border-b-2 border-gold-500">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🚚</span>
+              <div>
+                <span class="text-xs font-bold text-gold-300 block">الشحن الرسمي والسريع:</span>
+                <span class="text-sm font-black text-white">شركة Swift Express</span>
+              </div>
+            </div>
+            <div class="bg-gold-500/20 text-gold-300 px-3 py-1 rounded-lg text-xs font-bold border border-gold-400/30">
+              سعر المنتج: 4500 دج
+            </div>
+          </div>
+
+          <form id="orderForm" onsubmit="handleOrderSubmit(event)" class="space-y-5">
+            
+            <!-- Full Name -->
+            <div>
+              <label for="fullName" class="block text-sm font-bold text-stone-800 mb-1.5">
+                الاسم واللقب الكامل <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="fullName" name="fullName" required placeholder="مثال: يونس بن مسعود" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-stone-900 text-sm font-medium transition-all shadow-xs">
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label for="phone" class="block text-sm font-bold text-stone-800 mb-1.5">
+                رقم الهاتف (للاتصال والتأكيد) <span class="text-rose-500">*</span>
+              </label>
+              <input type="tel" id="phone" name="phone" required placeholder="مثال: 0555123456" pattern="^(05|06|07)[0-9]{8}$" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-stone-900 text-sm font-medium transition-all shadow-xs" dir="ltr">
+              <span class="text-[11px] text-stone-500 mt-1 block">رقم هاتف جزائري شغال مكون من 10 أرقام (05 أو 06 أو 07).</span>
+            </div>
+
+            <!-- Wilaya Selection (58 Wilayas with Swift Express Pricing) -->
+            <div>
+              <label for="wilaya" class="block text-sm font-bold text-stone-800 mb-1.5">
+                الولاية (اختر ولايتك من الـ 58 ولاية) <span class="text-rose-500">*</span>
+              </label>
+              <select id="wilaya" name="wilaya" required onchange="calculateOrderTotal()" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-stone-900 text-sm font-bold transition-all shadow-xs">
+                <option value="" disabled selected>-- اختر ولايتك من القائمة --</option>
+                <!-- Populated via JavaScript for all 58 Wilayas -->
+              </select>
+            </div>
+
+            <!-- Delivery Type: Office (مكتب) vs Home (منزل) -->
+            <div>
+              <label class="block text-sm font-bold text-stone-800 mb-2">
+                طريقة الاستلام والتوصيل عبر Swift Express <span class="text-rose-500">*</span>
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                
+                <!-- Option Home -->
+                <label id="label-home" onclick="setDeliveryType('home')" class="cursor-pointer flex items-center justify-between p-3.5 rounded-xl border-2 border-gold-500 bg-gold-50/70 transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="deliveryType" value="home" checked class="text-gold-600 focus:ring-gold-500 h-4 w-4">
+                    <div>
+                      <span class="text-sm font-bold text-stone-900 block">🏠 توصيل إلى باب المنزل</span>
+                      <span class="text-[11px] text-stone-500 block">إلى عنوانك مباشرة</span>
+                    </div>
+                  </div>
+                  <span id="rate-home-badge" class="text-xs font-black text-gold-800 font-cairo">-- دج</span>
+                </label>
+
+                <!-- Option Office (Stop Desk) -->
+                <label id="label-office" onclick="setDeliveryType('office')" class="cursor-pointer flex items-center justify-between p-3.5 rounded-xl border-2 border-stone-200 bg-white hover:border-gold-400 transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="deliveryType" value="office" class="text-gold-600 focus:ring-gold-500 h-4 w-4">
+                    <div>
+                      <span class="text-sm font-bold text-stone-900 block">🏢 استلام من مكتب Swift</span>
+                      <span class="text-[11px] text-stone-500 block">Stop Desk بسعر مخفّض</span>
+                    </div>
+                  </div>
+                  <span id="rate-office-badge" class="text-xs font-black text-stone-700 font-cairo">-- دج</span>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Detailed Address -->
+            <div>
+              <label for="address" class="block text-sm font-bold text-stone-800 mb-1.5">
+                البلدية والعنوان أو نقطة التوصيل <span class="text-rose-500">*</span>
+              </label>
+              <textarea id="address" name="address" required rows="2" placeholder="مثال: بلدية الأبيار، حي النرجس، بجانب المسجد" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-stone-900 text-sm font-medium transition-all shadow-xs"></textarea>
+            </div>
+
+            <!-- Quantity & Live Total Summary Box -->
+            <div class="bg-gold-50/80 p-4 rounded-2xl border border-gold-300 space-y-3">
+              
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div>
+                  <span class="block text-sm font-bold text-stone-900">الكمية:</span>
+                  <span class="text-xs text-stone-500">سعر القطعة: 4500 دج</span>
+                </div>
+                
+                <div class="flex items-center gap-3 bg-white px-3 py-1 rounded-xl border border-gold-300 shadow-2xs">
+                  <button type="button" onclick="adjustQty(-1)" class="w-8 h-8 rounded-lg bg-stone-100 hover:bg-gold-500 hover:text-white font-bold text-stone-700 flex items-center justify-center transition-colors">
+                    -
+                  </button>
+                  <span id="qty-display" class="w-6 text-center font-extrabold text-stone-900 text-base font-cairo">1</span>
+                  <button type="button" onclick="adjustQty(1)" class="w-8 h-8 rounded-lg bg-stone-100 hover:bg-gold-500 hover:text-white font-bold text-stone-700 flex items-center justify-center transition-colors">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <!-- Calculation Breakdown -->
+              <div class="pt-2 border-t border-gold-200 space-y-1.5 text-xs sm:text-sm">
+                <div class="flex justify-between text-stone-600">
+                  <span>سعر المنتج (<span id="summary-qty">1</span> قطعة):</span>
+                  <span id="summary-subtotal" class="font-bold text-stone-900 font-cairo">4500 دج</span>
+                </div>
+                <div class="flex justify-between text-stone-600">
+                  <span>سعر التوصيل (<span id="summary-shipping-type">المنزل</span>):</span>
+                  <span id="summary-shipping" class="font-bold text-stone-900 font-cairo">-- دج</span>
+                </div>
+                <div class="flex justify-between text-base sm:text-lg font-extrabold text-stone-900 pt-2 border-t border-gold-300">
+                  <span class="text-gold-950">المبلغ الإجمالي عند الاستلام:</span>
+                  <span id="summary-total" class="text-gold-700 font-cairo text-xl sm:text-2xl font-black">4500 دج</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-btn" class="w-full relative group overflow-hidden py-4 px-6 rounded-2xl bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 text-white font-black text-base sm:text-lg shadow-xl shadow-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/50 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2">
+              <span class="relative z-10 flex items-center gap-2">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>تأكيد طلب ركن الصلاة الآن - الدفع عند الاستلام</span>
+              </span>
+              <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            </button>
+
+            <!-- Trust Line -->
+            <div class="flex items-center justify-center gap-4 text-xs font-semibold text-stone-600 pt-1">
+              <span class="flex items-center gap-1 text-emerald-700">✓ معاينة قبل الدفع</span>
+              <span>•</span>
+              <span class="flex items-center gap-1 text-gold-800">✓ شحن Swift Express السريع</span>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section & Trust Badges -->
+  <footer class="bg-stone-900 text-stone-300 pt-14 pb-10 border-t-2 border-gold-500 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- 3 Trust Badges Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10 border-b border-stone-800 text-center">
+        
+        <div class="flex flex-col items-center p-4 rounded-xl bg-white/5 border border-gold-500/20">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-2xl text-gold-400 mb-2.5">
+            🚚
+          </div>
+          <h4 class="text-base font-bold text-white mb-1">التوصيل السريع عبر Swift Express</h4>
+          <p class="text-xs text-stone-400">
+            توصيل سريع وموثوق لكافة الولايات الـ 58 (للمكتب أو إلى باب المنزل).
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center p-4 rounded-xl bg-white/5 border border-gold-500/20">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-2xl text-gold-400 mb-2.5">
+            💳
+          </div>
+          <h4 class="text-base font-bold text-white mb-1">الدفع عند الاستلام بعد المعاينة</h4>
+          <p class="text-xs text-stone-400">
+            حق المعاينة والتأكد من سلامة ركن الصلاة الفوراكس قبل تسليم أي مبلغ.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center p-4 rounded-xl bg-white/5 border border-gold-500/20">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-2xl text-gold-400 mb-2.5">
+            🛡️
+          </div>
+          <h4 class="text-base font-bold text-white mb-1">فوراكس Forex أصلي 100%</h4>
+          <p class="text-xs text-stone-400">
+            خامة نقية، صلبة ومقاومة للماء والرطوبة بتشطيب أبيض مذهب فاخر.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom (Unified Brand Name: ركن الصلاة) -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-400">
+        <div>
+          ركن الصلاة &copy; 2026 - جميع الحقوق محفوظة
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <a href="https://wa.me/213541406196" target="_blank" class="text-emerald-400 font-bold hover:underline flex items-center gap-1">
+            <span>💬 واتساب: +213 541 40 61 96</span>
+          </a>
+          <span>•</span>
+          <button onclick="copyPageHtml()" class="text-gold-400 hover:underline">نسخ كود الـ HTML</button>
+          <span>•</span>
+          <a href="#order-section" class="text-gold-400 hover:underline">اطلب ركن الصلاة</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Modal: Order Confirmation & WhatsApp -->
+  <div id="orderSuccessModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-gold-400 text-right transform scale-95 transition-transform duration-300" id="modalCard">
+      
+      <button onclick="closeModal()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 flex items-center justify-center transition-colors">
+        ✕
+      </button>
+
+      <div class="w-14 h-14 rounded-2xl bg-emerald-100 border border-emerald-300 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-3 shadow-xs">
+        ✓
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-black text-stone-900 text-center mb-1">
+        تم تسجيل طلبك بنجاح!
+      </h3>
+      <p class="text-xs sm:text-sm text-stone-500 text-center mb-5">
+        رقم تتبع طلب ركن الصلاة: <span id="modal-order-id" class="font-bold text-gold-700 font-cairo">#PRAY-9821</span>
+        <br>
+        <span class="inline-block mt-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+          يتم توجيه طلبك تلقائياً إلى واتساب: +213 541 40 61 96
+        </span>
+      </p>
+
+      <div class="bg-gold-50/70 rounded-2xl p-4 border border-gold-200 mb-5 space-y-2 text-xs sm:text-sm text-stone-700">
+        <div class="flex justify-between pb-1.5 border-b border-gold-200">
+          <span class="text-stone-500">الاسم:</span>
+          <span id="modal-customer-name" class="font-bold text-stone-900">--</span>
+        </div>
+        <div class="flex justify-between pb-1.5 border-b border-gold-200">
+          <span class="text-stone-500">الهاتف:</span>
+          <span id="modal-customer-phone" class="font-bold text-stone-900" dir="ltr">--</span>
+        </div>
+        <div class="flex justify-between pb-1.5 border-b border-gold-200">
+          <span class="text-stone-500">الولاية ونوع التوصيل:</span>
+          <span id="modal-customer-wilaya" class="font-bold text-stone-900">--</span>
+        </div>
+        <div class="flex justify-between pb-1.5 border-b border-gold-200">
+          <span class="text-stone-500">العنوان:</span>
+          <span id="modal-customer-address" class="font-bold text-stone-900 max-w-[200px] truncate text-left">--</span>
+        </div>
+        <div class="flex justify-between text-base font-extrabold text-gold-950 pt-1">
+          <span>المبلغ الإجمالي عند الاستلام:</span>
+          <span id="modal-customer-total" class="text-gold-700 font-cairo text-lg font-black">-- دج</span>
+        </div>
+      </div>
+
+      <div class="space-y-2.5">
+        <button onclick="sendViaWhatsApp()" class="w-full py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition-all">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.156.57 4.181 1.569 5.925l-1.577 5.764 5.914-1.552c1.706.924 3.655 1.463 5.727 1.463 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <span>إرسال تفاصيل الطلب عبر واتساب (+213 541 40 61 96) 💬</span>
+        </button>
+
+        <button onclick="closeModal()" class="w-full py-2.5 px-4 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs sm:text-sm transition-colors">
+          إغلاق
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript Matrix: 58 Wilayas with Exact Swift Express Pricing -->
+  <script>
+    const swiftWilayas = [
+      { id: 1, name: "01 - أدرار", office: 1100, home: 1400 },
+      { id: 2, name: "02 - الشلف", office: 500, home: 800 },
+      { id: 3, name: "03 - الأغواط", office: 550, home: 900 },
+      { id: 4, name: "04 - أم البواقي", office: 450, home: 700 },
+      { id: 5, name: "05 - باتنة", office: 500, home: 700 },
+      { id: 6, name: "06 - بجاية", office: 400, home: 600 },
+      { id: 7, name: "07 - بسكرة", office: 550, home: 900 },
+      { id: 8, name: "08 - بشار", office: 1100, home: 1400 },
+      { id: 9, name: "09 - البليدة", office: 450, home: 750 },
+      { id: 10, name: "10 - البويرة", office: 450, home: 700 },
+      { id: 11, name: "11 - تمنراست", office: 1400, home: 1800 },
+      { id: 12, name: "12 - تبسة", office: 450, home: 700 },
+      { id: 13, name: "13 - تلمسان", office: 500, home: 850 },
+      { id: 14, name: "14 - تيارت", office: 500, home: 800 },
+      { id: 15, name: "15 - تيزي وزو", office: 450, home: 750 },
+      { id: 16, name: "16 - الجزائر", office: 450, home: 600 },
+      { id: 17, name: "17 - الجلفة", office: 500, home: 850 },
+      { id: 18, name: "18 - جيجل", office: 450, home: 700 },
+      { id: 19, name: "19 - سطيف", office: 450, home: 700 },
+      { id: 20, name: "20 - سعيدة", office: 550, home: 900 },
+      { id: 21, name: "21 - سكيكدة", office: 450, home: 700 },
+      { id: 22, name: "22 - سيدي بلعباس", office: 500, home: 800 },
+      { id: 23, name: "23 - عنابة", office: 450, home: 700 },
+      { id: 24, name: "24 - قالمة", office: 450, home: 700 },
+      { id: 25, name: "25 - قسنطينة", office: 400, home: 600 },
+      { id: 26, name: "26 - المدية", office: 450, home: 750 },
+      { id: 27, name: "27 - مستغانم", office: 500, home: 800 },
+      { id: 28, name: "28 - المسيلة", office: 500, home: 750 },
+      { id: 29, name: "29 - معسكر", office: 500, home: 800 },
+      { id: 30, name: "30 - ورقلة", office: 600, home: 1000 },
+      { id: 31, name: "31 - وهران", office: 450, home: 800 },
+      { id: 32, name: "32 - البيض", office: 600, home: 1000 },
+      { id: 33, name: "33 - إليزي", office: 1400, home: 1800 },
+      { id: 34, name: "34 - برج بوعريريج", office: 450, home: 700 },
+      { id: 35, name: "35 - بومرداس", office: 450, home: 700 },
+      { id: 36, name: "36 - الطارف", office: 500, home: 850 },
+      { id: 37, name: "37 - تندوف", office: 1400, home: 1800 },
+      { id: 38, name: "38 - تيسمسيلت", office: 450, home: 750 },
+      { id: 39, name: "39 - الوادي", office: 550, home: 900 },
+      { id: 40, name: "40 - خنشلة", office: 500, home: 800 },
+      { id: 41, name: "41 - سوق أهراس", office: 450, home: 700 },
+      { id: 42, name: "42 - تيبازة", office: 450, home: 750 },
+      { id: 43, name: "43 - ميلة", office: 450, home: 500 },
+      { id: 44, name: "44 - عين الدفلة", office: 450, home: 750 },
+      { id: 45, name: "45 - النعامة", office: 600, home: 1000 },
+      { id: 46, name: "46 - عين تموشنت", office: 500, home: 800 },
+      { id: 47, name: "47 - غرداية", office: 700, home: 1100 },
+      { id: 48, name: "48 - غليزان", office: 500, home: 800 },
+      { id: 49, name: "49 - تيميمون", office: 1100, home: 1400 },
+      { id: 50, name: "50 - برج باجي مختار", office: 1400, home: 1800 },
+      { id: 51, name: "51 - أولاد جلال", office: 600, home: 1000 },
+      { id: 52, name: "52 - بني عباس", office: 1100, home: 1400 },
+      { id: 53, name: "53 - عين صالح", office: 1400, home: 1800 },
+      { id: 54, name: "54 - إن قزام", office: 1400, home: 1800 },
+      { id: 55, name: "55 - تقرت", office: 600, home: 1000 },
+      { id: 56, name: "56 - جانت", office: 1400, home: 1800 },
+      { id: 57, name: "57 - المغير", office: 600, home: 1000 },
+      { id: 58, name: "58 - المنيعة", office: 700, home: 1100 }
+    ];
+
+    const BASE_PRICE = 4500;
+    let currentQty = 1;
+    let selectedDeliveryType = 'home';
+    let currentShippingCost = 0;
+    let currentSlide = 0;
+    let lastOrder = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("wilaya");
+      swiftWilayas.forEach(w => {
+        const opt = document.createElement("option");
+        opt.value = w.id;
+        opt.textContent = w.name;
+        select.appendChild(opt);
+      });
+      calculateOrderTotal();
+    });
+
+    function showToast(message, icon) {
+      const toast = document.getElementById("pageToast");
+      const msgEl = document.getElementById("toastMessage");
+      const iconEl = document.getElementById("toastIcon");
+      if (!toast) return;
+
+      msgEl.innerText = message;
+      if (icon) iconEl.innerText = icon;
+      toast.classList.remove("-translate-y-20", "opacity-0", "pointer-events-none");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      setTimeout(hideToast, 4000);
+    }
+
+    function hideToast() {
+      const toast = document.getElementById("pageToast");
+      if (!toast) return;
+      toast.classList.remove("translate-y-0", "opacity-100");
+      toast.classList.add("-translate-y-20", "opacity-0", "pointer-events-none");
+    }
+
+    function setDeliveryType(type) {
+      selectedDeliveryType = type;
+      const labelHome = document.getElementById("label-home");
+      const labelOffice = document.getElementById("label-office");
+      const radioHome = document.querySelector('input[name="deliveryType"][value="home"]');
+      const radioOffice = document.querySelector('input[name="deliveryType"][value="office"]');
+
+      if (type === 'home') {
+        if (radioHome) radioHome.checked = true;
+        labelHome.className = "cursor-pointer flex items-center justify-between p-3.5 rounded-xl border-2 border-gold-500 bg-gold-50/70 transition-all";
+        labelOffice.className = "cursor-pointer flex items-center justify-between p-3.5 rounded-xl border-2 border-stone-200 bg-white hover:border-gold-400 transition-all";
+        document.getElementById("summary-shipping-type").innerText = "المنزل";
+      } else {
+        if (radioOffice) radioOffice.checked = true;
+        labelOffice.className = "cursor-pointer flex items-center justify-between p-3.5 rounded-xl border-2 border-gold-500 bg-gold-50/70 transition-all";
+        labelHome.className = "cursor-pointer flex items-center justify-between p-3.5 rounded-xl border-2 border-stone-200 bg-white hover:border-gold-400 transition-all";
+        document.getElementById("summary-shipping-type").innerText = "المكتب";
+      }
+
+      calculateOrderTotal();
+    }
+
+    function calculateOrderTotal() {
+      const wilayaSelect = document.getElementById("wilaya");
+      const wilayaId = parseInt(wilayaSelect.value);
+      const found = swiftWilayas.find(w => w.id === wilayaId);
+
+      const homeBadge = document.getElementById("rate-home-badge");
+      const officeBadge = document.getElementById("rate-office-badge");
+
+      if (found) {
+        homeBadge.innerText = `${found.home} دج`;
+        officeBadge.innerText = `${found.office} دج`;
+        currentShippingCost = (selectedDeliveryType === 'home') ? found.home : found.office;
+        document.getElementById("summary-shipping").innerText = `${currentShippingCost} دج`;
+      } else {
+        homeBadge.innerText = "-- دج";
+        officeBadge.innerText = "-- دج";
+        currentShippingCost = 0;
+        document.getElementById("summary-shipping").innerText = "اختر الولاية أولاً";
+      }
+
+      const subtotal = currentQty * BASE_PRICE;
+      const grandTotal = subtotal + currentShippingCost;
+
+      document.getElementById("summary-subtotal").innerText = `${subtotal.toLocaleString()} دج`;
+      document.getElementById("summary-total").innerText = `${grandTotal.toLocaleString()} دج`;
+    }
+
+    function adjustQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      document.getElementById("qty-display").innerText = currentQty;
+      document.getElementById("summary-qty").innerText = currentQty;
+      calculateOrderTotal();
+    }
+
+    // Carousel functionality
+    function goToSlide(index) {
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".carousel-dot");
+      
+      slides.forEach((s, idx) => {
+        if (idx === index) {
+          s.classList.remove("opacity-0", "pointer-events-none");
+          s.classList.add("opacity-100", "z-20");
+        } else {
+          s.classList.remove("opacity-100", "z-20");
+          s.classList.add("opacity-0", "pointer-events-none", "z-10");
+        }
+      });
+
+      dots.forEach((d, idx) => {
+        if (idx === index) {
+          d.className = "carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-gold-500 bg-gold-500 text-white shadow-xs text-center truncate";
+        } else {
+          d.className = "carousel-dot p-2 rounded-xl border text-xs font-bold transition-all duration-200 border-stone-200 bg-white text-stone-700 hover:border-gold-400 text-center truncate";
+        }
+      });
+
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const slides = document.querySelectorAll(".carousel-slide");
+      if (!slides.length) return;
+      const nextIndex = (currentSlide + 1) % slides.length;
+      goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+      const slides = document.querySelectorAll(".carousel-slide");
+      if (!slides.length) return;
+      const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+      goToSlide(prevIndex);
+    }
+
+    setInterval(nextSlide, 6500);
+
+    // Form submission
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+      const fullName = document.getElementById("fullName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const wilayaSelect = document.getElementById("wilaya");
+      const wilayaId = parseInt(wilayaSelect.value);
+      const address = document.getElementById("address").value.trim();
+
+      if (!wilayaId) {
+        showToast("يرجى اختيار ولايتك لحساب سعر الشحن وإكمال الطلب", "⚠️");
+        wilayaSelect.focus();
+        return;
+      }
+
+      const wilayaObj = swiftWilayas.find(w => w.id === wilayaId);
+      const shippingTypeLabel = (selectedDeliveryType === 'home') ? 'توصيل للمنزل' : 'استلام من المكتب (Stop Desk)';
+      const shippingPrice = (selectedDeliveryType === 'home') ? wilayaObj.home : wilayaObj.office;
+      const subtotal = currentQty * BASE_PRICE;
+      const totalAmount = subtotal + shippingPrice;
+      const orderId = '#SWIFT-' + Math.floor(1000 + Math.random() * 9000);
+
+      lastOrder = {
+        orderId: orderId,
+        fullName: fullName,
+        phone: phone,
+        wilaya: wilayaObj.name,
+        deliveryType: shippingTypeLabel,
+        address: address,
+        qty: currentQty,
+        total: totalAmount
+      };
+
+      // Populate Modal
+      document.getElementById("modal-order-id").innerText = orderId;
+      document.getElementById("modal-customer-name").innerText = fullName;
+      document.getElementById("modal-customer-phone").innerText = phone;
+      document.getElementById("modal-customer-wilaya").innerText = `${wilayaObj.name} (${shippingTypeLabel})`;
+      document.getElementById("modal-customer-address").innerText = address;
+      document.getElementById("modal-customer-total").innerText = `${totalAmount.toLocaleString()} دج`;
+
+      // Show Modal
+      const modal = document.getElementById("orderSuccessModal");
+      const modalCard = document.getElementById("modalCard");
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      modal.classList.add("opacity-100");
+      modalCard.classList.remove("scale-95");
+      modalCard.classList.add("scale-100");
+
+      if (window.AndroidBridge && window.AndroidBridge.onOrderPlaced) {
+        window.AndroidBridge.onOrderPlaced(JSON.stringify(lastOrder));
+      }
+
+      // Automatically dispatch order to WhatsApp (+213 541 40 61 96)
+      setTimeout(sendViaWhatsApp, 300);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("orderSuccessModal");
+      const modalCard = document.getElementById("modalCard");
+      modal.classList.remove("opacity-100");
+      modal.classList.add("opacity-0", "pointer-events-none");
+      modalCard.classList.remove("scale-100");
+      modalCard.classList.add("scale-95");
+    }
+
+    function sendViaWhatsApp() {
+      if (!lastOrder) return;
+      const sellerPhone = "213541406196";
+      const msg = `السلام عليكم ورحمة الله،\nأود تأكيد طلب "ركن الصلاة" (فوراكس أبيض مقاوم للماء):\n\n` +
+        `📦 رقم الطلب: ${lastOrder.orderId}\n` +
+        `👤 الاسم: ${lastOrder.fullName}\n` +
+        `📞 الهاتف: ${lastOrder.phone}\n` +
+        `📍 الولاية: ${lastOrder.wilaya}\n` +
+        `🚚 نوع التوصيل: ${lastOrder.deliveryType} (Swift Express)\n` +
+        `🏠 العنوان / البلدية: ${lastOrder.address}\n` +
+        `🔢 الكمية: ${lastOrder.qty}\n` +
+        `💰 الإجمالي المستحق عند الاستلام: ${lastOrder.total} دج\n\n` +
+        `شكراً لكم وفي انتظار تأكيد الشحن!`;
+
+      const url = `https://wa.me/${sellerPhone}?text=${encodeURIComponent(msg)}`;
+      if (window.AndroidBridge && window.AndroidBridge.openWhatsApp) {
+        window.AndroidBridge.openWhatsApp(url);
+      } else {
+        window.open(url, '_blank');
+      }
+    }
+
+    function copyPageHtml() {
+      if (window.AndroidBridge && window.AndroidBridge.copyHtmlCode) {
+        window.AndroidBridge.copyHtmlCode();
+        return;
+      }
+      try {
+        const html = document.documentElement.outerHTML;
+        navigator.clipboard.writeText(html).then(() => {
+          showToast("تم نسخ كود صفحة الهبوط بالكامل بنجاح!", "📋");
+        }).catch(() => {
+          const ta = document.createElement("textarea");
+          ta.value = html;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          showToast("تم نسخ كود صفحة الهبوط بالكامل بنجاح!", "📋");
+        });
+      } catch (e) {
+        showToast("تم نسخ الكود", "✓");
+      }
+    }
+  </script>
+</body>
+</html>

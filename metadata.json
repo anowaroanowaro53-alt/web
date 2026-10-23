@@ -1,0 +1,6 @@
+{
+  "name": "ركن الصلاة",
+  "description": "صفحة هبوط فاخرة وتفاعلية لطلب ركن الصلاة من مادة الفوراكس المقاومة للماء مع حاسبة الشحن Swift Express وتأكيد الطلب",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
