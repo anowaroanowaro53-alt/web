@@ -142,14 +142,6 @@
 
       <!-- Quick Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Copy Source Button -->
-        <button onclick="copyPageHtml()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-700 bg-white/90 hover:bg-gold-50 border border-stone-200 hover:border-gold-400 rounded-xl shadow-xs transition-all duration-200">
-          <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-          </svg>
-          <span>نسخ كود HTML</span>
-        </button>
-
         <!-- CTA Order Button -->
         <a href="#order-section" class="relative group overflow-hidden rounded-xl bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 text-white font-extrabold px-5 py-2.5 text-xs sm:text-sm shadow-md shadow-gold-500/30 hover:shadow-lg hover:shadow-gold-500/40 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
           <span class="relative z-10 flex items-center gap-1.5">
@@ -723,8 +715,6 @@
             <span>💬 واتساب: +213 541 40 61 96</span>
           </a>
           <span>•</span>
-          <button onclick="copyPageHtml()" class="text-gold-400 hover:underline">نسخ كود الـ HTML</button>
-          <span>•</span>
           <a href="#order-section" class="text-gold-400 hover:underline">اطلب ركن الصلاة</a>
         </div>
       </div>
@@ -1082,28 +1072,6 @@
       }
     }
 
-    function copyPageHtml() {
-      if (window.AndroidBridge && window.AndroidBridge.copyHtmlCode) {
-        window.AndroidBridge.copyHtmlCode();
-        return;
-      }
-      try {
-        const html = document.documentElement.outerHTML;
-        navigator.clipboard.writeText(html).then(() => {
-          showToast("تم نسخ كود صفحة الهبوط بالكامل بنجاح!", "📋");
-        }).catch(() => {
-          const ta = document.createElement("textarea");
-          ta.value = html;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          showToast("تم نسخ كود صفحة الهبوط بالكامل بنجاح!", "📋");
-        });
-      } catch (e) {
-        showToast("تم نسخ الكود", "✓");
-      }
-    }
   </script>
 </body>
 </html>

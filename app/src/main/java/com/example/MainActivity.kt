@@ -1,8 +1,6 @@
 package com.example
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -29,7 +27,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -109,21 +106,6 @@ class WebAppInterface(
     onShowSnackbar("تم تسجيل طلبك بنجاح! سيتم التواصل معك هاتفياً لتأكيد الشحن.")
   }
 
-  @JavascriptInterface
-  fun copyHtmlCode() {
-    mainHandler.post {
-      try {
-        val htmlCode = context.assets.open("index.html").bufferedReader().use { it.readText() }
-        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("PrayerCornerHTML", htmlCode)
-        clipboard.setPrimaryClip(clip)
-        Toast.makeText(context, "تم نسخ كود صفحة الهبوط بالكامل إلى الحافظة!", Toast.LENGTH_SHORT).show()
-        onShowSnackbar("تم نسخ كود صفحة الهبوط بالكامل (HTML + Tailwind + JS) إلى الحافظة بنجاح!")
-      } catch (e: Exception) {
-        onShowSnackbar("تعذر نسخ الكود: ${e.message}")
-      }
-    }
-  }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -140,22 +122,6 @@ fun PrayerCornerApp() {
     webViewInstance?.let {
       if (it.canGoBack()) {
         it.goBack()
-      }
-    }
-  }
-
-  fun copyHtmlSource() {
-    try {
-      val htmlCode = context.assets.open("index.html").bufferedReader().use { it.readText() }
-      val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-      val clip = ClipData.newPlainText("PrayerCornerHTML", htmlCode)
-      clipboard.setPrimaryClip(clip)
-      scope.launch {
-        snackbarHostState.showSnackbar("تم نسخ كود صفحة الهبوط بالكامل (HTML + Tailwind + JS) إلى الحافظة بنجاح!")
-      }
-    } catch (e: Exception) {
-      scope.launch {
-        snackbarHostState.showSnackbar("تعذر نسخ الكود: ${e.message}")
       }
     }
   }
@@ -189,16 +155,6 @@ fun PrayerCornerApp() {
           )
         },
         actions = {
-          IconButton(
-            onClick = { copyHtmlSource() },
-            modifier = Modifier.testTag("copy_html_button")
-          ) {
-            Icon(
-              imageVector = Icons.Default.ContentCopy,
-              contentDescription = "نسخ كود الـ HTML",
-              tint = RoyalGold
-            )
-          }
           IconButton(
             onClick = { shareProduct() },
             modifier = Modifier.testTag("share_product_button")
